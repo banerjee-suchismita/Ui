@@ -70,18 +70,18 @@ const dummyValues = [
   { id: 7, title: "Fourth Chart", value: "LineGraph2"},
 ]
 
- class App extends Component {
+class App extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
-      container : []
+      container: []
     }
   }
 
-  onDragStart = (e,v) => {
+  onDragStart = (e, v) => {
     e.dataTransfer.dropEffect = "move";
-    e.dataTransfer.setData("text/plain",v)
+    e.dataTransfer.setData("text/plain", v)
   }
 
   allowDrop = ev => {
@@ -91,13 +91,13 @@ const dummyValues = [
   onDrop = e => {
     e.preventDefault();
     const data = e.dataTransfer.getData("text/plain");
-    let {container} = this.state;
+    let { container } = this.state;
     container.push(data);
-    this.setState({container});
+    this.setState({ container });
   }
 
-  render(){
-    const {items, container} = this.state;
+  render() {
+    const { items, container } = this.state;
     const { classes } = this.props;
 
     return (
@@ -130,7 +130,7 @@ const dummyValues = [
                         </Grid>
                   }
                 })}
-         
+
               </Grid>
             </div>
 
@@ -160,8 +160,8 @@ const dummyValues = [
                       </Grid>
                   }
                 })}
-                </Grid>
-              </div>
+              </Grid>
+            </div>
           </div>
           <Grid className={`${classes.half} ${classes.right}`} onDragOver={this.allowDrop} onDrop={this.onDrop}>
             {
@@ -196,7 +196,7 @@ const dummyValues = [
                 })
               }
               </Grid>
-            
+
             }
           </Grid>
         </div>
