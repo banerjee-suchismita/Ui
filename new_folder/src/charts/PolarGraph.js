@@ -1,23 +1,22 @@
 import React, { Component } from 'react'
 import Chart from "chart.js";
 
-
-export default class BarGraph extends Component {
+export default class PolarGraph extends Component {
     chartRef = React.createRef();
-    
+       
     componentDidMount() {
-        const  chartTitle  = this.props.title
-        const { barData } = this.props
+       const chartTitle = this.props.title
+        const { polarData } = this.props
         const myChartRef = this.chartRef.current.getContext("2d");
         
         new Chart(myChartRef, {
-            responsive:true,
-            type: "bar",
+            type: "polarArea",
             data: {
                 //Bring in data
                 labels: ["Jan", "Feb", "March","October","December"],
+                
                 datasets: [
-                   barData
+                    polarData
                 ]
             },
             options: {
@@ -40,12 +39,12 @@ export default class BarGraph extends Component {
                 scales: {
                     yAxes: [{
                         ticks: {
-                             stepSize:30,
-                             beginAtZero: true
+                            stepSize:30,
+                            beginAtZero: true
+                        }
+                    }]
                 }
-            }]
-        }
-    }
+            }
         });
     }
     render() {
@@ -54,7 +53,6 @@ export default class BarGraph extends Component {
                 <canvas
                     id="myChart"
                     ref={this.chartRef}
-                    
                 />
             </div>
         )

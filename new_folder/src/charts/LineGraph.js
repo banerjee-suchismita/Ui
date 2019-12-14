@@ -1,43 +1,42 @@
 import React, { Component } from 'react'
 import Chart from "chart.js";
-import jsonFile from '../jsonFiles/jsonFile'
 
 export default class LineGraph extends Component {
     chartRef = React.createRef();
-
-    // jsonType = props.json;
-
-    // labels = jsonFile.this.jsonType.map(function(e) {
-    //     if(this.jsonType === 'jsonarrayOne')
-    //         return e.Product;
-    //     else if(this.jsonType === 'jsonarrayTwo')
-    //         return e.Month;
-    //     else if(this.jsonType === 'jsonarrayThree')
-    //         return e.Products; 
-    //     else if(this.jsonType === 'jsonarrayFour')
-    //         return e.City;
-    //  });
-    
+       
     componentDidMount() {
+       const chartTitle = this.props.title
+        const { lineData } = this.props
         const myChartRef = this.chartRef.current.getContext("2d");
         
         new Chart(myChartRef, {
+            responsive:true,
             type: "line",
             data: {
                 //Bring in data
                 labels: ["Jan", "Feb", "March","October","December"],
                 
                 datasets: [
-                    {
-                        label: "Sales",
-                        data: [86, 39, 91,78,42],
-                        borderColor:'#413C58',
-                        backgroundColor : "#A3C4BC"
-                        
-                    }
+                    lineData
                 ]
             },
             options: {
+                legend: {
+                    display: false
+                },
+                tooltips: {
+                    callbacks: {
+                       label: function(tooltipItem) {
+                              return tooltipItem.yLabel;
+                       }
+                    }
+                },
+                title: {
+                    display: true,
+                    fontSize:10,
+                    padding:0,
+                    text: chartTitle
+                },
                 scales: {
                     yAxes: [{
                         ticks: {
@@ -51,10 +50,11 @@ export default class LineGraph extends Component {
     }
     render() {
         return (
-            <div>
+            <div style={{width:200 ,height:200,padding:0 }}>
                 <canvas
                     id="myChart"
                     ref={this.chartRef}
+                    
                 />
             </div>
         )

@@ -1,0 +1,40 @@
+{	
+    "line1":{
+        "label": "Sales",
+        "data": [5, 10, 20,40,80],
+        "backgroundColor": "#957DAD"
+    },
+	"bar2": {
+			"label": "Sales",
+			"data": [5, 10, 20,40,80],
+			"backgroundColor": "#F9665E"
+    },
+    "bar1": {
+        "label": "Sales",
+        "data": [86, 39, 91,78,42],
+        "backgroundColor": "#8DA290"
+    },  
+    "pie2":{
+        "data": [86, 39, 91,78,42],
+        "backgroundColor": "#FFE889"
+    },
+    "pie1":{
+        "data": [80,70,60,50,40],
+        "backgroundColor": "#76423D"
+    },  
+    "polar2":{
+        "label": "Sales",
+        "data": [80,70,60,50,40],
+        "backgroundColor": "#529106"
+    },
+    "polar1":{
+        "label": "Sales",
+        "data": [80,70,60,50,40],
+        "backgroundColor": "#BE0701"
+    },
+    "line2":{
+        "label": "Sales",
+        "data": [80,70,60,50,40],
+        "backgroundColor": "#5D5C58"
+    }   
+}
