@@ -8,7 +8,11 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+<<<<<<< HEAD
     "chart.js": "^2.9.3",
+=======
+    "convert-csv-to-json": "0.0.15",
+>>>>>>> 04c68eb2691d5d0a891779c9bfa6f4e1f42ec258
     "react": "^16.12.0",
     "react-beautiful-dnd": "^12.2.0",
     "react-dnd": "^10.0.2",
