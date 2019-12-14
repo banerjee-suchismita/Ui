@@ -1,9 +1,14 @@
 *{
   padding: 0px;
   margin: 0px;
+
 }
 
 .App {
   text-align: center;
+}
+
+body{
+  background-color: black;
 }
 

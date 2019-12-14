@@ -12,9 +12,8 @@ const Text = (props) => {
   const classes = useStyles();
   return (
     <Card className={classes.card}>
-      <CardContent style={{ paddingBottom: '5px' }}>
-        <Typography variant="headline" component="h3">{props.title}</Typography>
-        <Typography component="p">{props.value}</Typography>
+      <CardContent style={{ paddingBottom: '5px', marginLeft:2 }}>
+        {props.children}
       </CardContent>
     </Card>
   );
