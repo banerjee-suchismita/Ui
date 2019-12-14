@@ -8,8 +8,9 @@ import Grid from '@material-ui/core/Grid'
 import LineGraph from './charts/LineGraph'
 import PieGraph from './charts/PieGraph'
 import BarGraph from './charts/BarGraph'
-import {withStyles} from '@material-ui/core/styles';
-
+import { withStyles } from '@material-ui/core/styles';
+import jsondata from './charts/data.json'
+console.log(jsondata)
 
 
 const styles = {
@@ -29,48 +30,48 @@ const styles = {
   },
   left: {
     left: 0,
-    color:'white',
-    backgroundColor:'gray',
-    
+    color: 'white',
+    backgroundColor: 'gray',
+
   },
   right: {
     right: 0,
 
-    backgroundColor:'beige',
+    backgroundColor: 'beige',
   },
   top: {
     height: '50%',
     top: 0,
     borderBottom: '2px dashed black',
     overflow: 'hidden',
-    padding:20,
+    padding: 20,
   },
   bottom: {
     height: '50%',
     bottom: 0,
-    padding:20
+    padding: 20
   }
 };
 
 const dummyValues = [
-  { id: 0, title: "First Chart", value: "LineGraph", valueTwo: "BarGraph"},
-  { id: 1, title: "Second Chart", value: "BarGraph", valueTwo: "PieGraph"},
-  { id: 2, title: "Third Chart", value: "PieGraph", valueTwo: "LineGraph"},
-  { id: 3, title: "Fourth Chart", value: "LineGraph",valueTwo: "PieGraph"},
+  { id: 0, title: "First Chart", value: "LineGraph", valueTwo: "BarGraph" },
+  { id: 1, title: "Second Chart", value: "BarGraph", valueTwo: "PieGraph" },
+  { id: 2, title: "Third Chart", value: "PieGraph", valueTwo: "LineGraph" },
+  { id: 3, title: "Fourth Chart", value: "LineGraph", valueTwo: "PieGraph" },
 ]
 
- class App extends Component {
+class App extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
-      container : []
+      container: []
     }
   }
 
-  onDragStart = (e,v) => {
+  onDragStart = (e, v) => {
     e.dataTransfer.dropEffect = "move";
-    e.dataTransfer.setData("text/plain",v)
+    e.dataTransfer.setData("text/plain", v)
   }
 
   allowDrop = ev => {
@@ -80,13 +81,13 @@ const dummyValues = [
   onDrop = e => {
     e.preventDefault();
     const data = e.dataTransfer.getData("text/plain");
-    let {container} = this.state;
+    let { container } = this.state;
     container.push(data);
-    this.setState({container});
+    this.setState({ container });
   }
 
-  render(){
-    const {items, container} = this.state;
+  render() {
+    const { items, container } = this.state;
     const { classes } = this.props;
 
     return (
@@ -98,23 +99,23 @@ const dummyValues = [
               <Grid container spacing={3} >
 
                 {dummyValues.map(dummy => {
-                  if(dummy.value =='LineGraph'){
-                    return  <Grid sm={5} xs={5} style={{padding:2}} draggable="true" onDragStart={(e) => this.onDragStart(e,dummy.value)}>
-                          <Text><LineGraph/></Text>
-                        </Grid>
+                  if (dummy.value == 'LineGraph') {
+                    return <Grid sm={5} xs={5} style={{ padding: 2 }} draggable="true" onDragStart={(e) => this.onDragStart(e, dummy.value)}>
+                      <Text><LineGraph /></Text>
+                    </Grid>
                   }
-                  if(dummy.value =='PieGraph'){
-                    return  <Grid sm={5} xs={5} style={{padding:2}} draggable="true" onDragStart={(e) => this.onDragStart(e,dummy.value)}>
-                          <Text><PieGraph/></Text>
-                        </Grid>
+                  if (dummy.value == 'PieGraph') {
+                    return <Grid sm={5} xs={5} style={{ padding: 2 }} draggable="true" onDragStart={(e) => this.onDragStart(e, dummy.value)}>
+                      <Text><PieGraph /></Text>
+                    </Grid>
                   }
-                  if(dummy.value =='BarGraph'){
-                    return  <Grid sm={5} xs={5} style={{padding:2}} draggable="true" onDragStart={(e) => this.onDragStart(e,dummy.value)}>
-                          <Text><BarGraph/></Text>
-                        </Grid>
+                  if (dummy.value == 'BarGraph') {
+                    return <Grid sm={5} xs={5} style={{ padding: 2 }} draggable="true" onDragStart={(e) => this.onDragStart(e, dummy.value)}>
+                      <Text><BarGraph barData={jsondata.bar1} /></Text>
+                    </Grid>
                   }
                 })}
-         
+
               </Grid>
             </div>
 
@@ -122,43 +123,43 @@ const dummyValues = [
               <Grid container spacing={3} >
 
                 {dummyValues.map(dummy => {
-                  if(dummy.valueTwo =='LineGraph'){
-                    return  <Grid sm={5} xs={5} style={{padding:2}} draggable="true" onDragStart={(e) => this.onDragStart(e,dummy.valueTwo)}>
-                        <Text><LineGraph json={dummy.json}/></Text>
-                      </Grid>
+                  if (dummy.valueTwo == 'LineGraph') {
+                    return <Grid sm={5} xs={5} style={{ padding: 2 }} draggable="true" onDragStart={(e) => this.onDragStart(e, dummy.valueTwo)}>
+                      <Text><LineGraph json={dummy.json} /></Text>
+                    </Grid>
                   }
-                  if(dummy.valueTwo =='PieGraph'){
-                    return  <Grid sm={5} xs={5} style={{padding:2}} draggable="true" onDragStart={(e) => this.onDragStart(e,dummy.valueTwo)}>
-                        <Text><PieGraph/></Text>
-                      </Grid>
+                  if (dummy.valueTwo == 'PieGraph') {
+                    return <Grid sm={5} xs={5} style={{ padding: 2 }} draggable="true" onDragStart={(e) => this.onDragStart(e, dummy.valueTwo)}>
+                      <Text><PieGraph /></Text>
+                    </Grid>
                   }
-                  if(dummy.valueTwo =='BarGraph'){
-                    return  <Grid sm={5} xs={5} style={{padding:2}} draggable="true" onDragStart={(e) => this.onDragStart(e,dummy.valueTwo)}>
-                        <Text><BarGraph/></Text>
-                      </Grid>
+                  if (dummy.valueTwo == 'BarGraph') {
+                    return <Grid sm={5} xs={5} style={{ paddingTop: 2 }} draggable="true" onDragStart={(e) => this.onDragStart(e, dummy.valueTwo)}>
+                      <Text><BarGraph barData={jsondata.bar2} /></Text>
+                    </Grid>
                   }
                 })}
-                </Grid>
-              </div>
+              </Grid>
+            </div>
           </div>
           <Grid className={`${classes.half} ${classes.right}`} onDragOver={this.allowDrop} onDrop={this.onDrop}>
             {
-              <Grid container spacing={3}  style={{padding:2}}> 
-              {
-                container.map(i => {
-                  if(i == 'LineGraph'){
-                    return <Grid sm={5} xs={5} style={{padding:2}}> <Text><LineGraph/></Text> </Grid>               
-                  }
-                  else if(i == 'PieGraph'){
-                    return <Grid sm={5} xs={5} style={{padding:2}}> <Text><PieGraph/></Text> </Grid>               
-                  }
-                  else if(i == 'BarGraph'){
-                    return <Grid sm={5} xs={5} style={{padding:2}}> <Text><BarGraph/></Text> </Grid>               
-                  }
-                })
-              }
+              <Grid container spacing={3} style={{ paddingTop: '2.5rem', paddingLeft: '1rem' }}>
+                {
+                  container.map(i => {
+                    if (i == 'LineGraph') {
+                      return <Grid sm={5} xs={5} style={{ padding: 2 }}> <Text><LineGraph /></Text> </Grid>
+                    }
+                    else if (i == 'PieGraph') {
+                      return <Grid sm={5} xs={5} style={{ padding: 2 }}> <Text><PieGraph /></Text> </Grid>
+                    }
+                    else if (i == 'BarGraph') {
+                      return <Grid sm={5} xs={5}> <Text><BarGraph /></Text> </Grid>
+                    }
+                  })
+                }
               </Grid>
-            
+
             }
           </Grid>
         </div>
